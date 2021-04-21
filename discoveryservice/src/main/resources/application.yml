@@ -1,0 +1,11 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: discoveryservice # this is a id in micro service architecture
+
+eureka:
+  client:
+    register-with-eureka: false # 스스로를 등록할 필요 없다.
+    fetch-registry: false
