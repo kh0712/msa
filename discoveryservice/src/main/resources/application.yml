@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: discoveryservice # this is a id in micro service architecture
+    name: discoveryservice # this is an id in micro service architecture
 
 eureka:
   client:
