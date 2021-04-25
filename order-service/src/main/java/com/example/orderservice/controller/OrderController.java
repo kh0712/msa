@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,7 +51,7 @@ public class OrderController {
 
     @GetMapping("/health-check")
     public String status(){
-        return "It is working in catalog service PORT: " + env.getProperty("local.server.port");
+        return "It is working in Order service PORT: " + env.getProperty("local.server.port");
     }
 
 }

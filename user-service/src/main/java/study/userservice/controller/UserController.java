@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user-service")
 public class UserController {
 
     private final Environment env;

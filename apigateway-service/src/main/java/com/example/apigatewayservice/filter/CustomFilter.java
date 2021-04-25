@@ -8,6 +8,10 @@ import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+
+/**
+ * 로깅하는 커스텀 필터
+ */
 @Slf4j
 @Component
 public class CustomFilter extends AbstractGatewayFilterFactory<CustomFilter.Config> {

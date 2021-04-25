@@ -5,6 +5,10 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 자바코드로 라우팅하는 방법.
+ */
+
 //@Configuration
 public class FilterConfig {
     //@Bean

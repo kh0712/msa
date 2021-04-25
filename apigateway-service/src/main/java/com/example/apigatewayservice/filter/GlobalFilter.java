@@ -9,6 +9,11 @@ import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+
+/**
+ * Request Id와 Response Status Code 를 로깅하는 글로벌 필터
+ * Config 에 따라 로깅 유무 결정, Config 는 yml 에서 값 세팅
+ */
 @Slf4j
 @Component
 public class GlobalFilter extends AbstractGatewayFilterFactory<GlobalFilter.Config> {
