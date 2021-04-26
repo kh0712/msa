@@ -1,0 +1,8 @@
+#bootstrap.yml : config 서버의 설정 정보를 기록해둔다.
+spring:
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+      name: ecommerce,user-service #yml 파일 이름들
+#  profiles:
+#    active: dev #이러면 -dev가 붙인 파일이 읽힌다.

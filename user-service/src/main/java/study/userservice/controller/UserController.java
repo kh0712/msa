@@ -76,7 +76,11 @@ public class UserController {
 
     @GetMapping("/health-check")
     public String status(){
-        return "It is working in user service PORT: " + env.getProperty("local.server.port");
+        return "It is Working in User Service" +
+                    ", \nport(local.server.port)= " + env.getProperty("local.server.port")
+                +   ", \nport(server.port)= " + env.getProperty("server.port")
+                +   ", \ntoken secret= " + env.getProperty("token.secret")
+                +   ", \ntoken expiration time= " + env.getProperty("token.expiration_time");
     }
 
     @GetMapping("/welcome")

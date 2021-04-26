@@ -11,6 +11,11 @@ eureka:
 spring:
   application:
     name: apigateway-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     gateway:
       default-filters:
@@ -55,6 +60,14 @@ spring:
             - RemoveRequestHeader=Cookie # Post 요청은 쿠키를 지운다 (매번 새로운 요청으로 인식)
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - AuthHeaderFilter
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/actuator/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie # Post 요청은 쿠키를 지운다 (매번 새로운 요청으로 인식)
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
 
         - id: order-service
           uri: lb://ORDER-SERVICE
@@ -84,7 +97,14 @@ spring:
         #            - AddRequestHeader=second-request, second-request-header2
         #            - AddResponseHeader=second-response, second-response-header2
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, beans, health, httptrace, busrefresh
 
-token:
-  #echo 'silvernine-tech-spring-boot-jwt-tutorial-secret-silvernine-tech-spring-boot-jwt-tutorial-secret'|base64
-  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+
+#token:
+#  #echo 'silvernine-tech-spring-boot-jwt-tutorial-secret-silvernine-tech-spring-boot-jwt-tutorial-secret'|base64
+#  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+

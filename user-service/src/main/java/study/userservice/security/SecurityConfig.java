@@ -29,10 +29,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
 
-        //http.authorizeRequests().antMatchers("/users/**").permitAll();
+        http.authorizeRequests().antMatchers("/actuator/**").permitAll();
+
         http.authorizeRequests()
                 .antMatchers("/**")
-                .hasIpAddress("192.168.35.196")
+                    .hasIpAddress("192.168.35.196")
                 .and()
                 .addFilter(getAuthenticationFilter());
 
