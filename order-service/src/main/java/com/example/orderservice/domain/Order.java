@@ -12,10 +12,10 @@ import javax.persistence.*;
 public class Order extends BaseEntity{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 120, unique = true)
+    @Column(nullable = false, length = 120)
     private String productId;
 
     @Column(nullable = false)
@@ -27,10 +27,10 @@ public class Order extends BaseEntity{
     @Column(nullable = false)
     private Integer totalPrice;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "char(128)")
     private String userId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true,columnDefinition = "char(128)")
     private String orderId;
 
     public static Order of (OrderDto dto){

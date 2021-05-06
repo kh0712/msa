@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Catalog extends BaseEntity{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 120, unique = true)
@@ -48,6 +48,14 @@ public class Catalog extends BaseEntity{
 
     public Integer getStock() {
         return stock;
+    }
+
+    public void addStock(int qty){
+        this.stock += qty;
+    }
+
+    public void removeStock(int qty){
+        this.stock -= qty;
     }
 
     public Integer getUnitPrice() {

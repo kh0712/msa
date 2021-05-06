@@ -73,6 +73,16 @@ spring:
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/order-service/**
+          filters:
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/actuator/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie # Post 요청은 쿠키를 지운다 (매번 새로운 요청으로 인식)
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
 
         - id: first-service
           uri: lb://MY-FIRST-SERVICE
@@ -101,7 +111,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, beans, health, httptrace, busrefresh
+        include: refresh, beans, health, httptrace, busrefresh, info, metrics, prometheus
 
 
 #token:

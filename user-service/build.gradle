@@ -40,6 +40,13 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.2'
+    implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
+    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin', version: '2.2.4.RELEASE'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+
 
 
 }

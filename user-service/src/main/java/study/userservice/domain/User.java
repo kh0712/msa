@@ -3,6 +3,7 @@ package study.userservice.domain;
 
 import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.*;
+import org.yaml.snakeyaml.events.Event;
 import study.userservice.dto.UserDto;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ import javax.persistence.*;
 public class User extends BaseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 100,unique = true)
@@ -23,7 +24,7 @@ public class User extends BaseEntity {
     @Column(nullable = false, length = 100)
     private String name;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String pwd;
 
     @Column(nullable = false, length = 100,unique = true)

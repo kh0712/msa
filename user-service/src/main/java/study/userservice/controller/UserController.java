@@ -1,6 +1,7 @@
 package study.userservice.controller;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.micrometer.core.annotation.Timed;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -75,6 +76,7 @@ public class UserController {
     }
 
     @GetMapping("/health-check")
+    @Timed(value = "users.status", longTask = true)
     public String status(){
         return "It is Working in User Service" +
                     ", \nport(local.server.port)= " + env.getProperty("local.server.port")
@@ -83,18 +85,18 @@ public class UserController {
                 +   ", \ntoken expiration time= " + env.getProperty("token.expiration_time");
     }
 
-    @GetMapping("/welcome")
-    public String welcome(){
-        return greeting.getMessage();
-    }
-
-
     /**
      * DTOs
      */
 
+    @GetMapping("/welcome")
+    @Timed(value = "users.welcome", longTask = true)
+    public String welcome(){
+        return greeting.getMessage();
+    }
     @Data
     public static class SignUpRequestDto {
+
 
         @Email(message = "Not Valid Email")
         private String email;
